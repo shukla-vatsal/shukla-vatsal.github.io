@@ -53,7 +53,17 @@
       background: #484f58;
     }
 
-    /* Print optimization stylesheet */
+    .skill-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background-color: rgba(22, 27, 34, 0.9);
+      border: 1px solid rgba(48, 54, 61, 0.8);
+      color: #94a3b8;
+    }
+
+    /* Print optimization */
     @media print {
       body {
         background-color: #ffffff !important;
@@ -83,6 +93,11 @@
         color: #1f2937 !important;
         border: 1px solid #e5e7eb !important;
       }
+      .skill-tag {
+        background-color: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+      }
       a {
         text-decoration: none !important;
         color: #111827 !important;
@@ -95,7 +110,7 @@
 </head>
 <body class="bg-[#0b0f17] text-slate-300 font-sans antialiased selection:bg-sky-500/20 selection:text-sky-300 min-h-screen">
 
-  <!-- Status / Quick Notification Toast -->
+  <!-- Status Toast -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-300 pointer-events-none bg-sky-500 text-slate-950 font-mono text-xs px-4 py-2.5 rounded-lg shadow-xl font-semibold flex items-center space-x-2">
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
     <span id="toast-msg">Copied to clipboard</span>
@@ -107,7 +122,7 @@
       <div class="flex items-center space-x-2">
         <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
         <span class="text-slate-400 font-medium">status:</span>
-        <span class="text-emerald-400 font-semibold">available for platform & s/w infrastructure roles</span>
+        <span class="text-emerald-400 font-semibold">available for platform, SRE & AI infrastructure roles</span>
       </div>
       <div class="flex items-center space-x-3 no-print">
         <button onclick="window.print()" class="px-3 py-1.5 rounded-md bg-brand-card hover:bg-brand-border border border-brand-border text-slate-200 transition-colors flex items-center space-x-1.5 shadow-sm">
@@ -145,7 +160,7 @@
             </a>
             <a href="https://www.linkedin.com/in/thevatsal" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded bg-brand-surface hover:bg-brand-card border border-brand-border text-slate-300 hover:text-white transition-all print-tag">
               <svg class="w-3.5 h-3.5 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              <span>linkedin.com/in/vatsal-shukla</span>
+              <span>linkedin.com/in/thevatsal</span>
             </a>
           </div>
         </div>
@@ -154,22 +169,22 @@
       <!-- Engineering Mental Model / Summary -->
       <div class="bg-brand-surface/40 border border-brand-border/60 rounded-xl p-5 print-card">
         <div class="flex items-center space-x-2 text-sky-400 font-mono text-xs font-semibold mb-2">
-          <span>// EXECUTIVE SUMMARY & TECHNICAL SCOPE</span>
+          <span>// TECHNICAL SCOPE & CORE COMPETENCIES</span>
         </div>
         <p class="text-sm leading-relaxed text-slate-300 print-subtext">
-          Site Reliability & Platform Infrastructure Engineer specializing in resilient cloud platforms, declarative Kubernetes orchestration, and AI model serving infrastructure. Backed by advanced academic grounding in Information Security & Assurance (MS, GMU), applying rigorous defense-in-depth security principles to deterministic Linux primitives (cgroups v2, namespaces, eBPF), automated IaC landing zones, and GPU node scheduling for high-throughput AI/ML workloads. Advocate for automated telemetry, strict SLO/SLA governance, zero-trust cloud architectures, and zero-touch continuous deployment pipelines.
+          Infrastructure & Platform Reliability Engineer specialized in scalable cloud environments, declarative Kubernetes operations, and accelerated AI infrastructure. Core focus on production Linux internals (cgroups, namespaces), automated Terraform landing zones, high-throughput model serving runtimes, and distributed observability stacks (Prometheus, Grafana). Dedicated to zero-touch CI/CD automation, strict SLO/SLI governance, and defense-in-depth infrastructure reliability.
         </p>
       </div>
     </section>
 
-    <!-- 2. INTERACTIVE DOMAIN FILTER (UI CONTROL) -->
+    <!-- 2. INTERACTIVE DOMAIN FILTER -->
     <div class="no-print flex items-center justify-between border-b border-brand-border/60 pb-3">
-      <span class="text-xs font-mono text-slate-400">// FILTER VIEW BY FOCUS:</span>
+      <span class="text-xs font-mono text-slate-400">// FILTER BY DOMAIN:</span>
       <div class="flex flex-wrap gap-2" id="filter-controls">
-        <button onclick="filterDomain('all')" class="domain-btn active px-3 py-1 rounded text-xs font-mono border border-sky-500/50 bg-sky-500/20 text-sky-300 font-medium transition-all">All</button>
-        <button onclick="filterDomain('platform')" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">K8s & Cloud Platform</button>
-        <button onclick="filterDomain('ai-infra')" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">AI & GPU Infra</button>
-        <button onclick="filterDomain('observability')" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">Observability & SRE</button>
+        <button onclick="filterDomain('all', this)" class="domain-btn active px-3 py-1 rounded text-xs font-mono border border-sky-500/50 bg-sky-500/20 text-sky-300 font-medium transition-all">All</button>
+        <button onclick="filterDomain('platform', this)" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">K8s & Cloud Platform</button>
+        <button onclick="filterDomain('ai-infra', this)" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">AI & GPU Infra</button>
+        <button onclick="filterDomain('observability', this)" class="domain-btn px-3 py-1 rounded text-xs font-mono border border-brand-border bg-brand-surface text-slate-400 hover:text-slate-200 transition-all">Observability & SRE</button>
       </div>
     </div>
 
@@ -187,7 +202,7 @@
             <span class="text-xs font-mono font-semibold text-sky-400">CONTAINER ORCHESTRATION & SYSTEMS</span>
             <span class="text-[10px] font-mono text-slate-500">Core Runtime</span>
           </div>
-          <p class="text-xs text-slate-400 mb-3 print-subtext">Kernel namespace isolation, container runtimes, and cluster lifecycle orchestration.</p>
+          <p class="text-xs text-slate-400 mb-3 print-subtext">Kernel isolation, container runtimes, cluster networking, and node lifecycle.</p>
           <div class="flex flex-wrap gap-1.5">
             <span class="skill-tag">Kubernetes</span>
             <span class="skill-tag">Docker</span>
@@ -204,7 +219,7 @@
             <span class="text-xs font-mono font-semibold text-purple-400">AI & ACCELERATED COMPUTE</span>
             <span class="text-[10px] font-mono text-slate-500">GPU Clusters</span>
           </div>
-          <p class="text-xs text-slate-400 mb-3 print-subtext">Heterogeneous GPU node scheduling, fabric interconnects, and high-throughput inference.</p>
+          <p class="text-xs text-slate-400 mb-3 print-subtext">GPU operator deployment, fabric telemetry, and high-throughput model serving.</p>
           <div class="flex flex-wrap gap-1.5">
             <span class="skill-tag">NVIDIA Device Plugin</span>
             <span class="skill-tag">GPU Cluster Provisioning</span>
@@ -221,7 +236,7 @@
             <span class="text-xs font-mono font-semibold text-sky-400">CLOUD PLATFORMS & IAC</span>
             <span class="text-[10px] font-mono text-slate-500">Automation</span>
           </div>
-          <p class="text-xs text-slate-400 mb-3 print-subtext">Deterministic infrastructure state, enterprise Azure environments, and automated CI/CD.</p>
+          <p class="text-xs text-slate-400 mb-3 print-subtext">Declarative cloud infrastructure, landing zones, and automated CI/CD runners.</p>
           <div class="flex flex-wrap gap-1.5">
             <span class="skill-tag">Terraform</span>
             <span class="skill-tag">Microsoft Azure</span>
@@ -238,7 +253,7 @@
             <span class="text-xs font-mono font-semibold text-emerald-400">RELIABILITY & OBSERVABILITY</span>
             <span class="text-[10px] font-mono text-slate-500">Telemetry</span>
           </div>
-          <p class="text-xs text-slate-400 mb-3 print-subtext">Distributed system telemetry, actionable high-cardinality monitoring, and incident mitigation.</p>
+          <p class="text-xs text-slate-400 mb-3 print-subtext">Distributed systems metrics, multi-tiered alerting, and automated incident triage.</p>
           <div class="flex flex-wrap gap-1.5">
             <span class="skill-tag">Prometheus</span>
             <span class="skill-tag">Grafana</span>
@@ -259,7 +274,6 @@
       </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        
         <!-- CKA -->
         <div class="bg-brand-surface/60 border border-brand-border rounded-lg p-3.5 flex items-start space-x-3 print-card">
           <div class="p-2 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20 font-mono text-xs font-bold">CKA</div>
@@ -309,7 +323,6 @@
             <span class="inline-block mt-1 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">Associate</span>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -322,34 +335,34 @@
 
       <div class="space-y-6">
 
-        <!-- Role 1: Senior Platform Engineer -->
+        <!-- Role 1: Civica Resource Pvt Ltd -->
         <div class="border border-brand-border/70 bg-brand-surface/40 rounded-xl p-5 space-y-4 print-card">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-brand-border/60 pb-3 gap-1">
             <div>
-              <h3 class="text-base font-semibold text-white print-heading">Senior Infrastructure / Platform Engineer</h3>
-              <p class="text-xs font-mono text-sky-400">Civica & Enterprise Platform Environments</p>
+              <h3 class="text-base font-semibold text-white print-heading">Infrastructure Engineer</h3>
+              <p class="text-xs font-mono text-sky-400">Civica Resource Pvt. Ltd.</p>
             </div>
             <div class="text-xs font-mono text-slate-400 print-subtext">
-              <span>Primary Focus: Cloud Platform, K8s & IaC</span>
+              <span>Cloud Infrastructure, Kubernetes & Terraform</span>
             </div>
           </div>
 
           <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed font-sans print-subtext">
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Multi-Cluster Kubernetes & Terraform Landing Zones:</strong> Engineered zero-downtime multi-cluster Kubernetes deployments and automated Terraform modules across Microsoft Azure, decreasing environment provisioning lead time by <strong>65%</strong>.</span>
+              <span><strong>Multi-Cluster Kubernetes & Terraform Landing Zones:</strong> Engineered zero-downtime multi-cluster Kubernetes deployments and modular Terraform templates across Microsoft Azure, accelerating environment provisioning speed by <strong>65%</strong>.</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Observability & Telemetry Pipeline:</strong> Architected enterprise Prometheus, Alertmanager, and Grafana telemetry backbones aggregating high-frequency system metrics across <strong>120+ microservices</strong> with sub-minute alert latency.</span>
+              <span><strong>Observability & Telemetry Pipeline:</strong> Architected enterprise Prometheus, Alertmanager, and Grafana monitoring stacks gathering node and workload metrics across <strong>120+ microservices</strong> with sub-minute alert firing latency.</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Linux Kernel Tuning & Compute Isolation:</strong> Hardened Linux kernel parameters, memory limits via cgroups, and network namespaces for critical batch compute nodes, maintaining an operational <strong>99.99% infrastructure uptime SLA</strong>.</span>
+              <span><strong>Linux OS Hardening & Resource Isolation:</strong> Configured Linux kernel parameters, cgroups limits, and systemd isolation boundaries across production host nodes, supporting a <strong>99.99% infrastructure uptime SLA</strong>.</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Release Engineering Automation:</strong> Programmed declarative CI/CD release engineering workflows via GitHub Actions and reusable Python/PowerShell runbooks, completely eliminating manual rollout procedures across mission-critical systems.</span>
+              <span><strong>Deployment Automation:</strong> Automated continuous delivery pipelines using GitHub Actions, PowerShell Core, and Python runbooks, eliminating repetitive manual provisioning steps.</span>
             </li>
           </ul>
 
@@ -367,22 +380,22 @@
         <div class="border border-brand-border/70 bg-brand-surface/40 rounded-xl p-5 space-y-4 print-card">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-brand-border/60 pb-3 gap-1">
             <div>
-              <h3 class="text-base font-semibold text-white print-heading">Systems & Infrastructure Specialist</h3>
-              <p class="text-xs font-mono text-sky-400">Two Sigma Investments Support & Reliability</p>
+              <h3 class="text-base font-semibold text-white print-heading">Systems Support Engineer</h3>
+              <p class="text-xs font-mono text-sky-400">Two Sigma Investments</p>
             </div>
             <div class="text-xs font-mono text-slate-400 print-subtext">
-              <span>Focus: High-Performance Compute & Reliability</span>
+              <span>High-Performance Compute & Reliability Operations</span>
             </div>
           </div>
 
           <ul class="space-y-2.5 text-xs text-slate-300 leading-relaxed font-sans print-subtext">
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Compute Cluster Systems Administration:</strong> Administered high-performance hybrid Linux and Windows compute nodes and storage clusters under rigorous financial SLA constraints, preserving sub-millisecond execution standards.</span>
+              <span><strong>Compute Cluster Systems Support:</strong> Administered and supported mission-critical hybrid Linux/Windows compute nodes and network storage under rigorous quantitative hedge fund SLA thresholds.</span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="text-sky-400 font-mono mt-0.5">❯</span>
-              <span><strong>Incident Response & Reliability Protocols:</strong> Streamlined incident response procedures and engineered triage runbooks for Sev-1 disruptions, markedly reducing Mean Time to Resolution (MTTR) across core compute clusters.</span>
+              <span><strong>Incident Response & Reliability Protocols:</strong> Streamlined root-cause triage routines and technical response runbooks for Sev-1 disruptions, significantly decreasing Mean Time to Resolution (MTTR).</span>
             </li>
           </ul>
 
@@ -489,16 +502,17 @@
     }
 
     // Live domain filtering
-    function filterDomain(domain) {
+    function filterDomain(domain, btnElement) {
       const buttons = document.querySelectorAll('.domain-btn');
       buttons.forEach(btn => {
         btn.classList.remove('bg-sky-500/20', 'text-sky-300', 'border-sky-500/50');
         btn.classList.add('bg-brand-surface', 'text-slate-400', 'border-brand-border');
       });
 
-      // Highlight clicked button
-      event.target.classList.add('bg-sky-500/20', 'text-sky-300', 'border-sky-500/50');
-      event.target.classList.remove('text-slate-400', 'border-brand-border');
+      if (btnElement) {
+        btnElement.classList.add('bg-sky-500/20', 'text-sky-300', 'border-sky-500/50');
+        btnElement.classList.remove('text-slate-400', 'border-brand-border');
+      }
 
       const cards = document.querySelectorAll('.stack-card');
       cards.forEach(card => {
@@ -516,26 +530,6 @@
       });
     }
   </script>
-
-  <!-- Tag helper styling -->
-  <style>
-    .skill-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background-color: rgba(22, 27, 34, 0.9);
-      border: 1px solid rgba(48, 54, 61, 0.8);
-      color: #94a3b8;
-    }
-    @media print {
-      .skill-tag {
-        background-color: #f1f5f9 !important;
-        border: 1px solid #cbd5e1 !important;
-        color: #0f172a !important;
-      }
-    }
-  </style>
 
 </body>
 </html>
