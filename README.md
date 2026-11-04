@@ -2,4 +2,4 @@
 
 ## launch k9s lab env one liner
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shukla-vatsal/bash/main/setup-k9s-lab.sh | bash
+source <(curl -fsSL https://raw.githubusercontent.com/shukla-vatsal/bash/main/setup-k9s-lab.sh)
